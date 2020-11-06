@@ -1,6 +1,6 @@
 import random 
-  
-  
+
+
 # the .randrange() function generates a 
 # random number within the specified range.
 
@@ -12,65 +12,78 @@ pegs = random.choices(colours, k=4)
 num = ''.join(pegs)
 print(num)
 
-n = input("Guess the 4 digit number:")
-  
-# condition to test equality of the 
-# guess made. Program terminates if true. 
-if (n == num):   
+print("Welcome Supermind. You can now start to play by guessing the code.")
+print("Enter a guess by providing four characters and press Enter.")
+print ('Attempy #1:')
+guess = input("")
+
+"""if player guesses it first try"""
+if (guess == num):   
     print("Great! You guessed the number in just 1 try! You're a Mastermind!") 
 else: 
-    # ctr variable initialized. It will keep count of  
-    # the number of tries the Player takes to guess the number. 
-    ctr = 0  
-  
-    # while loop repeats as long as the  
-    # Player fails to guess the number correctly. 
-    while (n != num):   
-        # variable increments every time the loop 
-        # is executed, giving an idea of how many 
-        # guesses were made. 
-        ctr += 1  
-  
+    """records the number of turns you are on""" 
+    turns = 1 
+
+    
+
+    """while players guess does not equal the code""" 
+    while (guess != num):   
+        """add 1 to the turn"""
+        turns += 1  
+        
+
+        """ammount of the code correct"""
         count = 0
-  
-        # explicit type conversion of an integer to 
-        # a string in order to ease extraction of digits 
-        n = str(n)   
-  
-        # explicit type conversion of a string to an integer 
+
+        """explicit type conversion of an integer to 
+        a string in order to ease extraction of digits
+        """ 
+        guess = str(guess)   
+
+        """explicit type conversion of a string to an integer """
         num = str(num)   
-  
-        # correct[] list stores digits which are correct 
-        correct = ['X']*4  
-  
-        # for loop runs 4 times since the number has 4 digits. 
+
+        """correct[] list stores letters which are correct"""
+        correct = ['']*4
+
+        """for loop runs 4 times since the number has 4 letters""" 
         for i in range(0, 4):  
-  
-             # checking for equality of digits 
-            if (n[i] == num[i]):   
-                # number of digits guessed correctly increments 
+
+            """checking for equality of digits"""
+            if (guess[i] == num[i]):   
+                """number of digits guessed correctly increments"""
                 count += 1  
-                # hence, the digit is stored in correct[]. 
-                correct[i] = n[i]   
+                """the digit is stored in correct[]""" 
+                correct[i] = guess[i]   
             else: 
                 continue
-  
-        # when not all the digits are guessed correctly. 
-        if (count < 4) and (count != 0):   
-            print("Not quite the number. But you did get ", count, " digit(s) correct!") 
-            print("Also these numbers in your input were correct.") 
+
+        # if turns >=5:
+        #     print('Game over')
+        #     return
+
+        """when not all the digits are guessed correctly"""
+        if (count < 4) and (count != 0): 
+
+            print("Feedback on Attempt",  "#" + format(turns -1) + ':')
             for k in correct: 
-                print(k, end=' ') 
+                print(k, end=' ')
+
             print('\n') 
-            print('\n') 
-            n = input("Enter your next choice of numbers: ")
-  
-        # when none of the digits are guessed correctly. 
+
+            print("Attempt", "#" + format(turns, ) + ':')
+            guess = input("")
+
+            """when none of the digits are guessed correctly. """
         elif (count == 0):   
-            print("None of the numbers in your input match.") 
-            n = input("Enter your next choice of numbers: ")
-  
-    # condition for equality. 
-    if n == num:   
+
+            print("Feedback on Attempt", "#" + format(turns -1) + ':')
+            print('\n') 
+            print("Attempt", "#" + format(turns, ) + ':')
+            guess = input("")
+
+    """when code is finally entered correctly""" 
+    if guess == num:   
         print("You've become a Mastermind!") 
-        print("It took you only", ctr, "tries.")
+        print("It took you only", "#" + format(turns, ) + ':', "tries.")
+
