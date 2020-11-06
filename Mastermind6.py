@@ -124,7 +124,6 @@ class Game_Options(GameMode_Selector):
                 print('goodbye!')
                 return
 
-
 class player(Game_Options):
     def __init__ (self):
         super().__init__()
@@ -252,6 +251,7 @@ class Code_Maker():
 class Code_Braker():
     def __init__ (self):
         pass
+    def attempts (self):
 
 
 
