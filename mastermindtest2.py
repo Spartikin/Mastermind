@@ -7,9 +7,11 @@ import random
 # num = random.randrange(1000, 10000)  
 
 length = 4
-list1=['R', 'G', 'L', 'Y', 'W', 'B']
-num = [random.choice(list1) for _ in range(length)]
-  
+colours=['R', 'G', 'L', 'Y', 'W', 'B']
+pegs = random.choices(colours, k=4)
+num = ''.join(pegs)
+print(num)
+
 n = input("Guess the 4 digit number:")
   
 # condition to test equality of the 

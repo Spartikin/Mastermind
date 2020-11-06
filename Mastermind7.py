@@ -18,6 +18,8 @@ class GameMode_Selector():
         print ("(B) Original Mastermind for 1 Player")
         print ("(C) Mastermind44 for 4 Players")
         gamemode = input("")
+        
+        
 
         """if player input does not equal A OR B OR C, ask the question again"""
         while gamemode != 'A'and gamemode != 'a' and gamemode != 'B' and gamemode != 'b'and gamemode != 'C' and gamemode != 'c':
@@ -26,39 +28,42 @@ class GameMode_Selector():
             print ("(B) Original Mastermind for 1 Player")
             print ("(C) Mastermind44 for 4 Players")
             gamemode = input('')
-        return gamemode
-
-
-
-"""display details from top of screen"""
-gm_selector = GameMode_Selector()
-gamemode = gm_selector.display_details()
-print ("gamemode ="  + str(gamemode))
+       # return gamemode
+        test3 = Game_Options()
+        if gamemode == 'a':
+            test3.select_game_A()
+        elif gamemode == 'b':
+            test3.select_game_B()
+        elif gamemode == 'c':
+            test3.select_game_C()
         
-"""if B is pressed"""
+
 class Game_Options(GameMode_Selector):
 
     def __init__ (self):
-        pass
-
-    def select_game(self):
-        """if A is pressed"""
-        while gamemode == 'A' or gamemode =='a':
-            print ('What would you like to do?')
+        super().__init__()
+    
+    def select_game_A(self):
+        # test3 = GameMode_Selector()
+        # test3.display_details()
+        
+        """if A is selected"""
+        gamemode = 'a'
+        while gamemode == 'A' or gamemode == 'a':
+            print ('What would you like to do?a')
             print ('(p)lay the game')
             print ('(q)uit')
             play = input ('')
 
-            """if neither p or q is pressed"""
+            """if neither p or q is selected"""
             if play != 'p' and play != 'q':
                 print ('What would you like to do?')
                 print ('(p)lay the game')
                 print ('(q)uit')
                 play = input ('')
                 
-            """if p is selected"""
+                """if p is selected"""
             elif play == 'p':
-                
                 print("")
                 print ('Player 1: What is your name?')
                 Player_1_Name = input()
@@ -66,21 +71,23 @@ class Game_Options(GameMode_Selector):
                 print ('Player 2: What is your name?')
                 Player_2_Name = input()
                 print("")
-                return
+                return Player_1_Name, Player_2_Name
 
+                """if q is selected"""
             elif play == 'q':
                 print('goodbye!')
                 return
 
-
-        """if B is pressed"""
+    def select_game_B(self):
+        gamemode = 'b'
+        """if B is Selected"""
         while gamemode == 'B' or gamemode == 'b':
-            print ('What would you like to do?')
+            print ('What would you like to do?b')
             print ('(p)lay the game')
             print ('(q)uit')
             play = input ('')
 
-        
+            """if neither p or q is selected"""
             if play != 'p' and play != 'q':
                 print ('What would you like to do?')
                 print ('(p)lay the game')
@@ -92,14 +99,15 @@ class Game_Options(GameMode_Selector):
                 print ('Player 1: What is your name?')
                 Player_1_name = input()
                 print("")
-                return
+                return Player_1_name
 
             elif play == 'q':
                 print('goodbye!')
                 return
     
-
+    def select_game_C (self):
         """if C is pressed"""
+        gamemode = 'c'
         while gamemode == 'C' or gamemode == 'c':
             print ('What would you like to do?')
             print ('(p)lay the game')
@@ -115,77 +123,26 @@ class Game_Options(GameMode_Selector):
             elif play == 'p':
                 print("")
                 print ('Player 1: What is your name?')
-                Player_1_name = input()
+                Player_1_Name = input()
+                print ("")
+                print ('Player 2: What is your name?')
+                Player_2_Name = input()
                 print("")
-                return
+                print ('Player 3: What is your name?')
+                Player_3_Name = input()
+                print ("")
+                print ('Player 4: What is your name?')
+                Player_4_Name = input()
+                print("")
+                return Player_1_Name, Player_2_Name, Player_3_Name, Player_4_Name
 
             elif play == 'q':
                 print('goodbye!')
                 return
 
-game_options = Game_Options()
-game_options.select_game()
-
-class player():
-    def __init__ (self):
-        pass
 
 
-class Mastermind44():
-    def __init__ (self):
-        pass
-
-class mastermind():
-    def __init__ (self):
-        pass
-
-
-
-class Code_Maker():
-    def __init__ (self, code_list, length):
-        self.code_list = code_list
-        self.length = length
-
-class Code_Braker():
-    def __init__ (self):
-        pass
-
-
-
-class Player_Guess():
-    def __init__ (self):
-        pass
-
-class Peg():
-    def __init__ (self):
-        pass
-        
-    def pegs_colours(self, colours):
-        colours = ['R', 'G', 'L', 'Y', 'W', 'B']
-
-class Computer():
-    def __init__ (self):
-        pass
-
-    def random_code (self, Peg, pegs, colours):
-        pegs = random.choices(colours, k=4)
-        print(pegs)
-
-class Key_Peg():
-    def __init__ (self):
-        pass
-
-    def peg_checker (self, checker):
-        checker = ['W', 'B']
-
-class Code(Computer):
-    def __init__ (self):
-        pass
-
-    def Actual_Code(self, code):
-        pass
-
-class Code_Checker():
-    def __init__ (self):
-        pass
+"""display details from top of screen"""
+gm_selector = GameMode_Selector()
+gm_selector.display_details()
 
