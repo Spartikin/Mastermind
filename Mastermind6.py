@@ -286,15 +286,13 @@ class Player_Guess():
         print("Enter a guess by providing four characters and press Enter.")
         print ('Attempt #1:')
         guess = input("")
-
+        
+        """Return Guess"""
         att = mastermind(Player_Guess, Code_Checker)
-
         if guess == input:
             att.__init__(Player_Guess, Code_Checker)
-
-
         test3 = Code_Checker(Peg, Player_Guess, Key_Peg, Computer)
-        """Return Guess"""
+
 
 """contains the mastermind game for 2 people"""
 class Code2(Player_Guess, Computer, Peg, Key_Peg):
