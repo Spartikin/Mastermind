@@ -2,6 +2,7 @@ import random
 name = None
 play = None
 
+
 """display creator details"""
 class GameMode_Selector():
     
@@ -147,8 +148,8 @@ class player(Game_Options):
             print ('Player 1: What is your name?')
             Player_1_name = input()
             print("")
-            name5 = Player_Guess()
-            name5.Attempts()
+            name5 = Code_Checker(Peg, Player_Guess, Key_Peg, Computer)
+            name5.check_guess(Peg)
             return Player_1_name
 
     def player_chose_c (self):
@@ -175,14 +176,28 @@ class Mastermind44():
         pass
 
 class mastermind():
-    def __init__ (self):
-        pass
+    def __init__ (self, player_Guess, Code_Checker):
+        self.player_Guess = ""
+        self.Code_Checker = Code_Checker
 
-class Code_Maker():
+    def storage (self):
+        guess = input
+        chec = Code_Checker(Peg, Player_Guess, Key_Peg, Computer)
+        chec.check_guess
+
+
+class Peg():
+    def __init__ (self, colours):
+        self.colours = colours
+        
+    def pegs_colours(self, colours):
+        colours = ['R', 'G', 'L', 'Y', 'W', 'B']
+
+class Code_Maker(Peg):
     def __init__ (self, code_list, length):
         self.code_list = code_list
         self.length = length
-        pass
+
 
 class Code_Braker():
     def __init__ (self):
@@ -190,27 +205,14 @@ class Code_Braker():
     def attempts (self):
         pass
 
+class Key_Peg():
+    def __init__ (self, checker):
+        self.checker = checker
 
-class Player_Guess():
-    def __init__ (self):
-        # self.guess = guess
-        pass
-
-    def Attempts (self):
-        print("Welcome Supermind. You can now start to play by guessing the code.")
-        print("Enter a guess by providing four characters and press Enter.")
-        print ('Attempy #1:')
-        guess = input("")
-            
-        return guess
-        
-
-class Peg():
-    def __init__ (self):
-        pass
-        
-    def pegs_colours(self, colours):
-        colours = ['R', 'G', 'L', 'Y', 'W', 'B']
+    def peg_checker (self, checker):
+        checker = ['W', 'B']
+        key = ''.join(checker)
+        return key    
 
 class Computer(Peg):
     def __init__ (self):
@@ -222,16 +224,27 @@ class Computer(Peg):
         print(num)
         # name7 = Code_Checker()
         # name7.check_guess(self)
-        
 
-class Key_Peg():
+class Player_Guess():
     def __init__ (self):
-        pass
+        super().__init__()
+        # self.guess = guess
 
-    def peg_checker (self, checker):
-        checker = ['W', 'B']
-        key = ''.join(checker)
-        return key
+    def Attempts (self):
+        print("Welcome Supermind. You can now start to play by guessing the code.")
+        print("Enter a guess by providing four characters and press Enter.")
+        print ('Attempt #1:')
+        guess = input("")
+
+        att = mastermind(Player_Guess, Code_Checker)
+        # while guess != input:
+        #     guess = input("")
+        if guess == input:
+            att.__init__(Player_Guess, Code_Checker)
+
+
+        test3 = Code_Checker(Peg, Player_Guess, Key_Peg, Computer)
+        """Return Guess"""
 
 class Code(Computer):
     def __init__ (self):
@@ -240,18 +253,23 @@ class Code(Computer):
     def Actual_Code(self, code):
         pass
 
-class Code_Checker(Player_Guess, Computer):
-    def __init__ (self, colours, guess):
+class Code_Checker(Player_Guess, Computer, Peg, Key_Peg):
+    def __init__ (self, colours, guess, key, random_code):
         self.colours = colours
-        self.guess = guess
+        self.guess = ""
+        self.key = key
+        self.random_code = ""
     def check_guess (self, colours):
-        guess = Player_Guess()
-        guess.Attempts()
-        
-        # num = Computer()
+        length = 4
+        colours=['R', 'G', 'L', 'Y', 'W', 'B']
         pegs = random.choices(colours, k=4)
         num = ''.join(pegs)
         print(num)
+
+        print("Welcome Supermind. You can now start to play by guessing the code.")
+        print("Enter a guess by providing four characters and press Enter.")
+        print ('Attempy #1:')
+        guess = input("")
 
         """if player guesses it first try"""
         if (guess == num):   
@@ -325,5 +343,3 @@ class Code_Checker(Player_Guess, Computer):
 gm_selector = GameMode_Selector()
 gm_selector.display_details()
 
-check = Code_Checker()
-check.check_guess()
