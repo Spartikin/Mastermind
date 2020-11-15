@@ -1,5 +1,5 @@
 import random 
-
+num = None
 
 # the .randrange() function generates a 
 # random number within the specified range.
@@ -8,8 +8,7 @@ import random
 
 length = 4
 colours=['R', 'G', 'L', 'Y', 'W', 'B']
-pegs = random.choices(colours, k=4)
-num = ''.join(pegs)
+
 
 num = None
 print("Welcome Tom Turbo, you need to create a code that consists of four pegs.")
