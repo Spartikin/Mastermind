@@ -4,12 +4,14 @@ play = None
 
 
 
-"""display creator details"""
+"""display gamem options for different gaemodes"""
 class GameMode_Selector():
     
+    """setting self"""
     def __init__ (self):
         pass
 
+    """display creator details"""
     def display_details(self):
         print ('Welcome to Mastermind!')
         print ('Developed by Nicholas Tripodi-Baslis')
@@ -30,7 +32,7 @@ class GameMode_Selector():
             print ("(B) Original Mastermind for 1 Player")
             print ("(C) Mastermind44 for 4 Players")
             gamemode = input('')
-       # return gamemode
+        """return gamemode output to Game_Options class"""
         test3 = Game_Options()
         if gamemode == 'a' or gamemode == 'A':
             test3.select_game_A()
@@ -40,14 +42,14 @@ class GameMode_Selector():
             test3.select_game_C()
         
 
+"""choose weather you would like to play or not"""
 class Game_Options(GameMode_Selector):
 
+    """setting self"""
     def __init__ (self):
         super().__init__()
-    
+    """making a a method for the game options class"""
     def select_game_A(self):
-        # test3 = GameMode_Selector()
-        # test3.display_details()
         
         """if A is selected"""
         gamemode = 'a'
@@ -75,6 +77,7 @@ class Game_Options(GameMode_Selector):
                 print('goodbye!')
                 return
 
+    """creating a second method"""
     def select_game_B(self):
         gamemode = 'b'
         """if B is Selected"""
@@ -101,6 +104,7 @@ class Game_Options(GameMode_Selector):
                 print('goodbye!')
                 return
     
+    """creating a third method"""
     def select_game_C (self):
         """if C is pressed"""
         gamemode = 'c'
@@ -126,10 +130,14 @@ class Game_Options(GameMode_Selector):
                 print('goodbye!')
                 return
 
+"""creating class player to store the player name inside"""
 class player(Game_Options):
+
+    """setting self"""
     def __init__ (self):
         super().__init__()
 
+    """creating a method for the player class to store names"""
     def player_chose_a (self):
         play = 'p'
         if play == 'p':
@@ -144,6 +152,7 @@ class player(Game_Options):
             game2.guesses(Peg)
             return Player_1_Name, Player_2_Name
 
+    """creating a second method for the player class"""
     def player_chose_b (self):
         play = 'p'
         if play == 'p':
@@ -155,6 +164,7 @@ class player(Game_Options):
             name5.check_guess(Peg)
             return Player_1_name
 
+    """creating a third method for the player class"""
     def player_chose_c (self):
         play = 'p'
         if play == 'p':
@@ -173,32 +183,45 @@ class player(Game_Options):
             print("")
             return Player_1_Name, Player_2_Name, Player_3_Name, Player_4_Name
 
-
+"""making the class mastermind44 to hold all the relavent infomation for the class"""
 class Mastermind44():
+
+    """setting self"""
     def __init__ (self):
         pass
 
+"""making the class mastermind to hold all the relavent infomation for the class"""
 class mastermind():
+
+    """setting self"""
     def __init__ (self, player_Guess, Code_Checker):
         self.player_Guess = ""
         self.Code_Checker = Code_Checker
 
+    """creating the method storage to hold the origonal player guess and return it to the check guess method"""
     def storage (self):
         guess = input
         chec = Code_Checker(Peg, Player_Guess, Key_Peg, Computer)
         chec.check_guess
 
-
+"""creating the peg class to hold the colours that will be used in the game"""
 class Peg():
+    """setting self and colour"""
     def __init__ (self, colours):
         self.colours = colours
         
+    """creating a list to show the colours"""
     def pegs_colours(self, colours):
         colours = ['R', 'G', 'L', 'Y', 'W', 'B']
 
+"""creating the class for the code maker to take the origonal guess"""
 class Code_Maker(Peg):
+
+    """setting self"""
     def __init__ (self):
         pass
+
+    """creating a method for the code maker to create the code in"""
     def Maker(self):
         num = None
         print("Welcome Tom Turbo, you need to create a code that consists of four pegs.")
@@ -227,15 +250,10 @@ class Code_Maker(Peg):
         game2 = Code2(Peg, Player_Guess, Key_Peg, Computer)
         game2.guesses(Peg)
 
-
-
-class Code_Braker():
-    def __init__ (self):
-        pass
-    def attempts (self):
-        pass
-
+"""key pegs class determins weather the code entered is correct or not"""
 class Key_Peg():
+
+    """setting self"""
     def __init__ (self, checker):
         self.checker = checker
 
@@ -244,7 +262,10 @@ class Key_Peg():
         key = ''.join(checker)
         return key    
 
+"""computer randomly generates a code consisting or 4 didgets """
 class Computer(Peg):
+
+    """setting self"""
     def __init__ (self):
         pass
 
@@ -252,13 +273,13 @@ class Computer(Peg):
         pegs = random.choices(colours, k=4)
         num = ''.join(pegs)
         print(num)
-        # name7 = Code_Checker()
-        # name7.check_guess(self)
 
+"""player guess class is for making a guess in the origonal mastermind game"""
 class Player_Guess():
+
+    """setting self"""
     def __init__ (self):
         super().__init__()
-        # self.guess = guess
 
     def Attempts (self):
         print("Welcome Supermind. You can now start to play by guessing the code.")
@@ -267,8 +288,7 @@ class Player_Guess():
         guess = input("")
 
         att = mastermind(Player_Guess, Code_Checker)
-        # while guess != input:
-        #     guess = input("")
+
         if guess == input:
             att.__init__(Player_Guess, Code_Checker)
 
@@ -276,14 +296,9 @@ class Player_Guess():
         test3 = Code_Checker(Peg, Player_Guess, Key_Peg, Computer)
         """Return Guess"""
 
-class Code(Computer):
-    def __init__ (self):
-        pass
-
-    def Actual_Code(self, code):
-        pass
-
+"""contains the mastermind game for 2 people"""
 class Code2(Player_Guess, Computer, Peg, Key_Peg):
+    """setting self, colours, guess, key and random code"""
     def __init__ (self, colours, guess, key, random_code):
         self.colours = colours
         self.guess = ""
@@ -363,10 +378,6 @@ class Code2(Player_Guess, Computer, Peg, Key_Peg):
                     else: 
                         continue
 
-                # if turns >=5:
-                #     print('Game over')
-                #     return
-
                 """when not all the digits are guessed correctly"""
                 if (count < 4) and (count != 0): 
 
@@ -392,7 +403,10 @@ class Code2(Player_Guess, Computer, Peg, Key_Peg):
                 print("You've become a Mastermind!") 
                 print("It took you only", "#" + format(turns, ) + ':', "tries.")
 
+"""contains the mastermind game for 1 player"""
 class Code_Checker(Player_Guess, Computer, Peg, Key_Peg):
+
+    """setting self"""
     def __init__ (self, colours, guess, key, random_code):
         self.colours = colours
         self.guess = ""
@@ -449,10 +463,6 @@ class Code_Checker(Player_Guess, Computer, Peg, Key_Peg):
                         correct[i] = guess[i]   
                     else: 
                         continue
-
-                # if turns >=5:
-                #     print('Game over')
-                #     return
 
                 """when not all the digits are guessed correctly"""
                 if (count < 4) and (count != 0): 
