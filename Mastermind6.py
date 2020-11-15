@@ -210,6 +210,19 @@ class Code_Maker(Peg):
             print("Enter the code now:")
             code1 = input("")
 
+            print("")
+            print ('Enter the same code again:')
+            code2 = input("")
+            if code1 == code2:
+                num = code2
+                print("")
+                print ("The code was stored.")
+                print (num)
+
+            else:
+                print('code did not match')
+
+
 
 class Code_Braker():
     def __init__ (self):
