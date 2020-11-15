@@ -54,7 +54,7 @@ class Game_Options(GameMode_Selector):
         """if A is selected"""
         gamemode = 'a'
         if gamemode == 'A' or gamemode == 'a':
-            print ('What would you like to do?a')
+            print ('What would you like to do?')
             print ('(p)lay the game')
             print ('(q)uit')
             play = input ('')
@@ -82,7 +82,7 @@ class Game_Options(GameMode_Selector):
         gamemode = 'b'
         """if B is Selected"""
         if gamemode == 'B' or gamemode == 'b':
-            print ('What would you like to do?b')
+            print ('What would you like to do?')
             print ('(p)lay the game')
             print ('(q)uit')
             play = input ('')
@@ -242,7 +242,7 @@ class Code_Maker(Peg):
                 num = code2
                 print("")
                 print ("The code was stored.")
-                print (num)
+
 
             else:
                 print('code did not match')
@@ -286,7 +286,7 @@ class Player_Guess():
         print("Enter a guess by providing four characters and press Enter.")
         print ('Attempt #1:')
         guess = input("")
-        
+
         """Return Guess"""
         att = mastermind(Player_Guess, Code_Checker)
         if guess == input:
@@ -325,7 +325,7 @@ class Code2(Player_Guess, Computer, Peg, Key_Peg):
                 num = code2
                 print("")
                 print ("The code was stored.")
-                print (num)
+
 
             else:
                 print('code did not match')
@@ -416,7 +416,7 @@ class Code_Checker(Player_Guess, Computer, Peg, Key_Peg):
         colours=['R', 'G', 'L', 'Y', 'W', 'B']
         pegs = random.choices(colours, k=4)
         num = ''.join(pegs)
-        print(num)
+
 
         print("Welcome Supermind. You can now start to play by guessing the code.")
         print("Enter a guess by providing four characters and press Enter.")
