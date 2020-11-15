@@ -197,6 +197,18 @@ class Code_Maker(Peg):
     def __init__ (self, code_list, length):
         self.code_list = code_list
         self.length = length
+    def Maker(self):
+        code = None
+        print("Welcome Tom Turbo, you need to create a code that consists of four pegs.")
+        print("Eeach peg can be of the colour (R)ed, B(L)ue, (G)reen, (Y)ellow, (W)hite,")
+        print("or (B)lack. Specify the code by specifying four characters where each")
+        print("character indicates a colour as above. For example, WWRG represents the")
+        print("code White-White-Red-Green. You need to enter the code twice. No character")
+        print("is shown on the screen so Supermind cannot see it.")
+        print("")
+        while code == None:
+            print("Enter the code now:")
+            code1 = input("")
 
 
 class Code_Braker():

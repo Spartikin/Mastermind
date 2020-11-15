@@ -1,4 +1,3 @@
-colours = ['R', 'G', 'L', 'Y', 'W', 'B']
 code = None
 print("Welcome Tom Turbo, you need to create a code that consists of four pegs.")
 print("Eeach peg can be of the colour (R)ed, B(L)ue, (G)reen, (Y)ellow, (W)hite,")
