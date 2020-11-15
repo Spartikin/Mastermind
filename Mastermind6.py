@@ -147,8 +147,8 @@ class player(Game_Options):
             print ('Player 1: What is your name?')
             Player_1_name = input()
             print("")
-            name5 = Player_Guess
-            name5.Attempts(self)
+            name5 = Player_Guess()
+            name5.Attempts()
             return Player_1_name
 
     def player_chose_c (self):
@@ -193,15 +193,16 @@ class Code_Braker():
 
 class Player_Guess():
     def __init__ (self):
+        # self.guess = guess
         pass
 
     def Attempts (self):
         print("Welcome Supermind. You can now start to play by guessing the code.")
         print("Enter a guess by providing four characters and press Enter.")
         print ('Attempy #1:')
-        guess = str(input("")) 
-        name6 = Code_Checker()
-        name6.check_guess(self)
+        guess = input("")
+            
+        return guess
         
 
 class Peg():
@@ -219,8 +220,8 @@ class Computer(Peg):
         pegs = random.choices(colours, k=4)
         num = ''.join(pegs)
         print(num)
-        name7 = Code_Checker()
-        name7.check_guess(self)
+        # name7 = Code_Checker()
+        # name7.check_guess(self)
         
 
 class Key_Peg():
@@ -240,13 +241,17 @@ class Code(Computer):
         pass
 
 class Code_Checker(Player_Guess, Computer):
-    def __init__ (self):
-        pass
+    def __init__ (self, colours, guess):
+        self.colours = colours
+        self.guess = guess
     def check_guess (self, colours):
         guess = Player_Guess()
+        guess.Attempts()
         
-        num = Computer()
-        
+        # num = Computer()
+        pegs = random.choices(colours, k=4)
+        num = ''.join(pegs)
+        print(num)
 
         """if player guesses it first try"""
         if (guess == num):   
@@ -319,3 +324,6 @@ class Code_Checker(Player_Guess, Computer):
 """display details from top of screen"""
 gm_selector = GameMode_Selector()
 gm_selector.display_details()
+
+check = Code_Checker()
+check.check_guess()
