@@ -139,6 +139,8 @@ class player(Game_Options):
             print ('Player 2: What is your name?')
             Player_2_Name = input()
             print("")
+            name6 = Code_Maker()
+            name6.Maker()
             return Player_1_Name, Player_2_Name
 
     def player_chose_b (self):
@@ -194,9 +196,8 @@ class Peg():
         colours = ['R', 'G', 'L', 'Y', 'W', 'B']
 
 class Code_Maker(Peg):
-    def __init__ (self, code_list, length):
-        self.code_list = code_list
-        self.length = length
+    def __init__ (self):
+        pass
     def Maker(self):
         num = None
         print("Welcome Tom Turbo, you need to create a code that consists of four pegs.")
@@ -221,6 +222,9 @@ class Code_Maker(Peg):
 
             else:
                 print('code did not match')
+
+        game2 = Code2(Peg, Player_Guess, Key_Peg, Computer)
+        game2.guesses(Peg)
 
 
 
@@ -278,12 +282,22 @@ class Code(Computer):
     def Actual_Code(self, code):
         pass
 
+class Code2(Player_Guess, Computer, Peg, Key_Peg):
+    def __init__ (self, colours, guess, key, random_code):
+        self.colours = colours
+        self.guess = ""
+        self.key = key
+        self.random_code = ""
+    def guesses (self, colours):
+        pass
+
 class Code_Checker(Player_Guess, Computer, Peg, Key_Peg):
     def __init__ (self, colours, guess, key, random_code):
         self.colours = colours
         self.guess = ""
         self.key = key
         self.random_code = ""
+
     def check_guess (self, colours):
         length = 4
         colours=['R', 'G', 'L', 'Y', 'W', 'B']
